@@ -1,36 +1,50 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "COVID-19 Active Cases (10 Oct 2020)",
+  "title": {
+    "text": "Number of Days with Hazerdous Wind gusts in Australia",
+    "subtitle": "Data Source: Bureau of Meteorology",
+    "subtitleFontStyle": "italic",
+    "fontSize": 16,
+    "anchor": "start",
+    "color": "#000000"
+  },
   "width": 800,
-  "height": 400,
-  "projection": {"type": "equalEarth"},
+  "height": 600,
   "data": {
-    "url": "STE_2016_AUST.topojson",
-    "format": {"type": "topojson", "feature": "STE_2016_AUST"}
+    "url": "https://raw.githubusercontent.com/JYF-live/fit3179/refs/heads/main/STE_2016_AUST.topojson",
+    "format": {
+      "type": "topojson", "feature": "STE_2016_AUST"
+    }
   },
   "transform": [
     {
-      "lookup": "properties.NAME",
+      "lookup": "properties.STE_NAME16",
       "from": {
         "data": {
-          "url": "Gusty_Days.csv"
+          "url": "https://raw.githubusercontent.com/JYF-live/fit3179/refs/heads/main/Gusty_Days.csv"
         },
         "key": "State",
         "fields": ["gustDays"]
       }
-    },
-    {"calculate": "datum.gustDays", "as": "Gusty Days"}
+    }
   ],
-  "mark": {"type": "geoshape"},
+  "projection": {
+    "type": "mercator"
+  },
+  "mark": {
+    "type": "geoshape",
+    "stroke": "white"
+  },
   "encoding": {
     "color": {
-      "field": "Gusty Days",
-      "type": "quantitative"
-      
+      "field": "gustDays",
+      "type": "quantitative",
+      "title": "Wind Warning Days (>62 km/h)",
+      "scale": { "scheme": "bluepurple" }
     },
     "tooltip": [
-      {"field": "properties.NAME", "type": "nominal", "title": "State"},
-      {"field": "gustDays", "type": "quantitative"}
+      { "field": "properties.STE_NAME16", "type": "nominal", "title": "State" },
+      { "field": "gustDays", "type": "quantitative", "title": "Wind Warning Days" }
     ]
   }
 }
