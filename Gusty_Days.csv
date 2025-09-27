@@ -1,9 +1,9 @@
-"","State","gustDays"
-"1","New South Wales",564
-"2","Victoria",1056
-"3","Australian Capital Territory",262
-"4","Queensland",270
-"5","Western Australia",528
-"6","South Australia",601
-"7","Tasmania",912
-"8","Northern Territory",521
+State,gustDays
+New South Wales,564
+Victoria,1056
+Australian Capital Territory,262
+Queensland,270
+Western Australia,528
+South Australia,601
+Tasmania,912
+Northern Territory,521
